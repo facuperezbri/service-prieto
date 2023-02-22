@@ -7,9 +7,9 @@ import Topbar from "./components/global/Topbar";
 import Sidebar from "./components/global/Sidebar";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Team from "./pages/team/Team";
-import Contacts from "./pages/contacts/Contacts";
+import Clients from "./pages/clients/Clients";
 import Invoices from "./pages/invoices/Invoices";
-import Form from "./pages/form/Form";
+import ClientForm from "./pages/clientForm/ClientForm";
 
 const App = () => {
   const [theme, colorMode] = useMode();
@@ -26,9 +26,9 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/team" element={<Team />} />
-                <Route path="/contacts" element={<Contacts />} />
+                <Route path="/clients" element={<Clients />} />
                 <Route path="/invoices" element={<Invoices />} />
-                <Route path="/form" element={<Form />} />
+                <Route path="/clientForm" element={<ClientForm />} />
               </Routes>
             </main>
           </div>

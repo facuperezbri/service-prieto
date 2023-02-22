@@ -17,9 +17,37 @@ model User {
   email       String
   phoneNumber String?
   address     String?
-  number      Int?
   location    String?
   province    String?
   picture     String?
   admin       Boolean @default(false)
+}
+
+model Client {
+  dni         Int     @id @unique
+  name        String
+  lastName    String
+  email       String
+  phoneNumber String?
+  address     String?
+  location    String?
+  province    String?
+  Quotes      Quote[]
+}
+
+model Quote {
+  id        Int      @id @default(autoincrement())
+  date      DateTime @default(now())
+  Items     Item[]
+  Client    Client?  @relation(fields: [clientDni], references: [dni])
+  clientDni Int?
+}
+
+model Item {
+  id          String @id @default(uuid())
+  description String
+  price       Int
+  quantity    Int
+  Quote       Quote? @relation(fields: [quoteId], references: [id])
+  quoteId     Int?
 }

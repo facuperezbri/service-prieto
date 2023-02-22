@@ -113,14 +113,6 @@ const Sidebar = () => {
             />
 
             <Item
-              title="Contacts Information"
-              to="/contacts"
-              icon={<ContactsOutlined />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-
-            <Item
               title="Invoices Balances"
               to="/invoices"
               icon={<ReceiptOutlinedIcon />}
@@ -128,9 +120,18 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
 
+            <Typography m="20px">Clientes</Typography>
             <Item
-              title="Profile Form"
-              to="/form"
+              title="Clientes"
+              to="/clients"
+              icon={<ContactsOutlined />}
+              selected={selected}
+              setSelected={setSelected}
+            />
+
+            <Item
+              title="Crear Cliente"
+              to="/clientForm"
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
