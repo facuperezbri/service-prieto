@@ -3,6 +3,9 @@ const prisma = require("../../prisma/prismaDB");
 const getUsers = async (_req, res) => {
   try {
     const users = await prisma.user.findMany();
+    users.sort((a, b) => {
+      return a.dni - b.dni;
+    });
     res.send(users);
   } catch (error) {
     console.error(error);

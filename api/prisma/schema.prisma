@@ -18,6 +18,7 @@ model User {
   phoneNumber String?
   address     String?
   location    String?
+  department  String?
   province    String?
   picture     String?
   admin       Boolean @default(false)
@@ -31,6 +32,7 @@ model Client {
   phoneNumber String?
   address     String?
   location    String?
+  department  String?
   province    String?
   Quotes      Quote[]
 }

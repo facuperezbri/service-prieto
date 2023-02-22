@@ -19,6 +19,7 @@ const initialValues = {
   phoneNumber: "",
   address: "",
   location: "",
+  department: "",
   province: "",
 };
 
@@ -142,7 +143,7 @@ const Form = () => {
                 error={!!touched.address && !!errors.address}
                 helperText={touched.address && errors.address}
                 sx={{
-                  gridColumn: "span 4",
+                  gridColumn: "span 2",
                 }}
               />
 
@@ -157,6 +158,22 @@ const Form = () => {
                 name="location"
                 error={!!touched.location && !!errors.location}
                 helperText={touched.location && errors.location}
+                sx={{
+                  gridColumn: "span 2",
+                }}
+              />
+
+              <TextField
+                fullWidth
+                variant="filled"
+                type="text"
+                label="Departamento"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={values.department}
+                name="department"
+                error={!!touched.department && !!errors.department}
+                helperText={touched.department && errors.department}
                 sx={{
                   gridColumn: "span 2",
                 }}

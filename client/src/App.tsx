@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { ProSidebarProvider } from "react-pro-sidebar";
 
 import Topbar from "./components/global/Topbar";
-import Sidebar from "./components/global/Sidebar";
+import Sidebar from "./components/global/sidebar/Sidebar";
 import Dashboard from "./pages/dashboard/Dashboard";
 import Team from "./pages/team/Team";
 import Clients from "./pages/clients/Clients";

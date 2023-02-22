@@ -8,5 +8,6 @@ export const clientSchema = yup.object().shape({
   phoneNumber: yup.string().required("Ingrese el teléfono, por favor."),
   address: yup.string().required("Ingrese la dirección, por favor."),
   location: yup.string().required("Ingrese la localidad, por favor."),
+  department: yup.string().required("Ingrese el departamento, por favor."),
   province: yup.string().required("Ingrese la provincia, por favor."),
 });

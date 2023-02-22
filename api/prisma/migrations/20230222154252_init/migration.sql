@@ -7,6 +7,7 @@ CREATE TABLE "User" (
     "phoneNumber" TEXT,
     "address" TEXT,
     "location" TEXT,
+    "department" TEXT,
     "province" TEXT,
     "picture" TEXT,
     "admin" BOOLEAN NOT NULL DEFAULT false,
@@ -23,6 +24,7 @@ CREATE TABLE "Client" (
     "phoneNumber" TEXT,
     "address" TEXT,
     "location" TEXT,
+    "department" TEXT,
     "province" TEXT,
 
     CONSTRAINT "Client_pkey" PRIMARY KEY ("dni")

@@ -1,49 +1,25 @@
-import { ReactNode, useState } from "react";
 import { Sidebar as SB, Menu, MenuItem, useProSidebar } from "react-pro-sidebar";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
-import { Link } from "react-router-dom";
-import { tokens } from "../../theme";
 
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
-import ContactsOutlined from "@mui/icons-material/ContactsOutlined";
-import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
-import LogoutIcon from "@mui/icons-material/Logout";
+import { Dashboard, Users } from "./sidebarData";
+
+import { tokens } from "../../../theme";
+
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
-import ProfileImage from "../../assets/user.png";
-
-interface ItemProps {
-  title: string;
-  to: string;
-  icon: ReactNode;
-  selected?: string;
-  setSelected?: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const Item = ({ title, to, icon, selected, setSelected }: ItemProps) => {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
-
-  return (
-    <MenuItem
-      component={<Link to={to} />}
-      active={selected === title}
-      style={{ color: colors.grey[100] }}
-      onClick={setSelected ? () => setSelected(title) : undefined}
-      icon={icon}
-    >
-      <Typography>{title}</Typography>
-    </MenuItem>
-  );
-};
+import ProfileImage from "../../../assets/user.png";
+import Item from "./SidebarItem";
+import { Clients } from "./sidebarData";
+import { Quotes } from "./sidebarData";
+import { useState } from "react";
 
 const Sidebar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
-  const { collapsed, collapseSidebar } = useProSidebar();
   const [selected, setSelected] = useState("Dashboard");
+
+  const { collapsed, collapseSidebar } = useProSidebar();
 
   return (
     <Box
@@ -103,41 +79,24 @@ const Sidebar = () => {
 
           {/* Menu Items */}
           <Box>
-            <Item title="Dashboard" to="/" icon={<HomeOutlinedIcon />} selected={selected} setSelected={setSelected} />
-            <Item
-              title="Manage Team"
-              to="/team"
-              icon={<PeopleOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+            {Dashboard.map((el) => (
+              <Item title={el.title} to={el.to} icon={<el.icon />} selected={selected} setSelected={setSelected} />
+            ))}
 
-            <Item
-              title="Invoices Balances"
-              to="/invoices"
-              icon={<ReceiptOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+            <Typography m="20px">Usuarios</Typography>
+            {Users.map((el) => (
+              <Item title={el.title} to={el.to} icon={<el.icon />} selected={selected} setSelected={setSelected} />
+            ))}
 
             <Typography m="20px">Clientes</Typography>
-            <Item
-              title="Clientes"
-              to="/clients"
-              icon={<ContactsOutlined />}
-              selected={selected}
-              setSelected={setSelected}
-            />
+            {Clients.map((el) => (
+              <Item title={el.title} to={el.to} icon={<el.icon />} selected={selected} setSelected={setSelected} />
+            ))}
 
-            <Item
-              title="Crear Cliente"
-              to="/clientForm"
-              icon={<HomeOutlinedIcon />}
-              selected={selected}
-              setSelected={setSelected}
-            />
-
-            <Item title="Sign out" to="/signout" icon={<LogoutIcon />} />
+            <Typography m="20px">Presupuestos</Typography>
+            {Quotes.map((el) => (
+              <Item title={el.title} to={el.to} icon={<el.icon />} selected={selected} setSelected={setSelected} />
+            ))}
           </Box>
         </Menu>
       </SB>

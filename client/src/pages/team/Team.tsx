@@ -2,7 +2,6 @@ import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 
-import { mockDataTeam } from "../../data/mockData";
 import Header from "../../components/Header";
 
 import { AdminPanelSettingsOutlined, LockClockOutlined, SecurityOutlined } from "@mui/icons-material";
@@ -66,7 +65,7 @@ const Team = () => {
           },
         }}
       >
-        <DataGrid rows={mockDataTeam} columns={columns} />
+        {/* <DataGrid rows={mockDataTeam} columns={columns} /> */}
       </Box>
     </Box>
   );
