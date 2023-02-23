@@ -11,17 +11,18 @@ datasource db {
 }
 
 model User {
-  dni         Int     @id @unique
-  name        String
-  lastName    String
-  email       String
-  phoneNumber String?
-  address     String?
-  location    String?
-  department  String?
-  province    String?
-  picture     String?
-  admin       Boolean @default(false)
+  dni            Int     @id @unique
+  name           String
+  lastName       String
+  email          String
+  hashedPassword String
+  phoneNumber    String?
+  address        String?
+  location       String?
+  department     String?
+  province       String?
+  picture        String?
+  admin          Boolean @default(false)
 }
 
 model Client {

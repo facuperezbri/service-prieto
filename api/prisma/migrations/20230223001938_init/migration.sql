@@ -4,6 +4,7 @@ CREATE TABLE "User" (
     "name" TEXT NOT NULL,
     "lastName" TEXT NOT NULL,
     "email" TEXT NOT NULL,
+    "hashedPassword" TEXT NOT NULL,
     "phoneNumber" TEXT,
     "address" TEXT,
     "location" TEXT,
