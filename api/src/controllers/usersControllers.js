@@ -1,4 +1,5 @@
 const prisma = require("../../prisma/prismaDB");
+const bcrypt = require("bcrypt");
 
 const getUsers = async (_req, res) => {
   try {
@@ -31,7 +32,10 @@ const getUserByDni = async (req, res) => {
 };
 
 const createUser = async (req, res) => {
-  const { dni, name, lastName, email, hashedPassword } = req.body;
+  const { dni, name, lastName, email, password } = req.body;
+
+  const salt = bcrypt.genSaltSync(10);
+  const hashedPassword = bcrypt.hashSync(password, salt);
 
   try {
     const userExists = await prisma.user.findUnique({
