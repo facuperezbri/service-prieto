@@ -28,6 +28,7 @@ const Clients = () => {
     },
     { field: "name", headerName: "Nombre", flex: 1 },
     { field: "lastName", headerName: "Apellido", flex: 1 },
+    { field: "email", headerName: "Email", flex: 1 },
     {
       field: "phoneNumber",
       headerName: "Número de teléfono",
@@ -36,9 +37,9 @@ const Clients = () => {
       headerAlign: "left",
       align: "left",
     },
-    { field: "email", headerName: "Email", flex: 1 },
     { field: "address", headerName: "Dirección", flex: 1 },
     { field: "location", headerName: "Localidad", flex: 1 },
+    { field: "department", headerName: "Departamento", flex: 1 },
     { field: "province", headerName: "Provincia", flex: 1 },
   ];
 

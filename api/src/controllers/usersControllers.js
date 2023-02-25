@@ -60,8 +60,20 @@ const createUser = async (req, res) => {
 };
 
 const updateUser = async (req, res) => {
-  const { dni, name, lastName, email, hashedPassword, phoneNumber, address, location, department, province, picture } =
-    req.body;
+  const {
+    dni,
+    name,
+    lastName,
+    email,
+    hashedPassword,
+    phoneNumber,
+    address,
+    location,
+    department,
+    province,
+    picture,
+    admin,
+  } = req.body;
 
   try {
     const userExists = await prisma.user.findUnique({
@@ -88,6 +100,7 @@ const updateUser = async (req, res) => {
         department,
         province,
         picture,
+        admin,
       },
     });
 

@@ -6,7 +6,7 @@ import { ProSidebarProvider } from "react-pro-sidebar";
 import Topbar from "./components/global/Topbar";
 import Sidebar from "./components/global/sidebar/Sidebar";
 import Dashboard from "./pages/dashboard/Dashboard";
-import Team from "./pages/team/Team";
+import Team from "./pages/users/Users";
 import Clients from "./pages/clients/Clients";
 import Invoices from "./pages/invoices/Invoices";
 import ClientForm from "./pages/clientForm/ClientForm";

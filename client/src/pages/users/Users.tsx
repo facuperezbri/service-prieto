@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
@@ -5,24 +6,43 @@ import { tokens } from "../../theme";
 import Header from "../../components/Header";
 
 import { AdminPanelSettingsOutlined, LockClockOutlined, SecurityOutlined } from "@mui/icons-material";
+import axios from "axios";
 
 const Team = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/users").then((res) => setUsers(res.data));
+  }, []);
+
+  console.log(users);
 
   const columns: GridColDef[] = [
-    { field: "id", headerName: "ID", width: 150 },
-    { field: "name", headerName: "Name", flex: 1, cellClassName: "name-column--cell" },
-    { field: "age", headerName: "Age", type: "number", headerAlign: "left", align: "left" },
-    { field: "phone", headerName: "Phone Number", type: "number", flex: 1 },
+    { field: "dni", headerName: "DNI", flex: 0.5 },
+    { field: "name", headerName: "Nombre", flex: 1 },
+    { field: "lastName", headerName: "Apellido", flex: 1 },
     { field: "email", headerName: "Email", flex: 1 },
     {
-      field: "access",
-      headerName: "Access Level",
+      field: "phoneNumber",
+      headerName: "Número de teléfono",
+      type: "number",
       flex: 1,
+      headerAlign: "left",
+      align: "left",
+    },
+    { field: "address", headerName: "Dirección", flex: 1 },
+    { field: "location", headerName: "Localidad", flex: 1 },
+    { field: "department", headerName: "Departamento", flex: 1 },
+    { field: "province", headerName: "Provincia", flex: 1 },
+    {
+      field: "admin",
+      headerName: "Permisos",
+      flex: 1.5,
       headerAlign: "center",
       align: "center",
-      renderCell: ({ row: { access } }) => {
+      renderCell: ({ row: { admin } }) => {
         return (
           <Box
             width="60%"
@@ -30,14 +50,12 @@ const Team = () => {
             p="5px"
             display="flex"
             justifyContent="center"
-            bgcolor={access === "admin" ? colors.greenAccent[600] : colors.greenAccent[700]}
+            bgcolor={admin ? colors.greenAccent[600] : colors.greenAccent[700]}
             borderRadius="4px"
           >
-            {access === "admin" && <AdminPanelSettingsOutlined />}
-            {access === "manager" && <SecurityOutlined />}
-            {access === "user" && <LockClockOutlined />}
+            {admin ? <AdminPanelSettingsOutlined /> : <LockClockOutlined />}
             <Typography color={colors.grey[100]} ml="5px">
-              {access}
+              {admin ? "Admin" : "Usuario"}
             </Typography>
           </Box>
         );
@@ -65,7 +83,7 @@ const Team = () => {
           },
         }}
       >
-        {/* <DataGrid rows={mockDataTeam} columns={columns} /> */}
+        <DataGrid getRowId={(row) => row.dni} rows={users} columns={columns} />
       </Box>
     </Box>
   );
