@@ -23,6 +23,7 @@ model User {
   province       String?
   picture        String?
   admin          Boolean @default(false)
+  refreshToken   String? @unique
 }
 
 model Client {

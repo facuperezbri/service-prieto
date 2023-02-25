@@ -1,5 +1,4 @@
 const prisma = require("../../prisma/prismaDB");
-const bcrypt = require("bcrypt");
 
 const getUsers = async (_req, res) => {
   try {
@@ -25,38 +24,6 @@ const getUserByDni = async (req, res) => {
     });
 
     user ? res.json(user) : res.status(261).json(`User with DNI ${dni} wasn't found.`);
-  } catch (error) {
-    console.error(error);
-    res.send(error);
-  }
-};
-
-const createUser = async (req, res) => {
-  const { dni, name, lastName, email, password } = req.body;
-
-  const salt = bcrypt.genSaltSync(10);
-  const hashedPassword = bcrypt.hashSync(password, salt);
-
-  try {
-    const userExists = await prisma.user.findUnique({
-      where: {
-        dni: Number(dni),
-      },
-    });
-
-    if (userExists) return res.status(260).json(`Client with ${dni} already exists`);
-
-    const user = await prisma.user.create({
-      data: {
-        dni: Number(dni),
-        name,
-        lastName,
-        email,
-        hashedPassword,
-      },
-    });
-
-    res.status(201).json(user);
   } catch (error) {
     console.error(error);
     res.send(error);
@@ -140,4 +107,4 @@ const deleteUser = async (req, res) => {
   }
 };
 
-module.exports = { getUsers, getUserByDni, createUser, updateUser, deleteUser };
+module.exports = { getUsers, getUserByDni, updateUser, deleteUser };

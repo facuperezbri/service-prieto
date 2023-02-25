@@ -1,6 +1,12 @@
 const { Router } = require("express");
 
-const { getQuotes, getQuoteById, createQuote, updateQuote, deleteQuote } = require("../controllers/quotesControllers");
+const {
+  getQuotes,
+  getQuoteById,
+  createQuote,
+  updateQuote,
+  deleteQuote,
+} = require("../../controllers/quotesControllers");
 
 const router = Router();
 

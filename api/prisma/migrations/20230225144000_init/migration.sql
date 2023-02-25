@@ -12,6 +12,7 @@ CREATE TABLE "User" (
     "province" TEXT,
     "picture" TEXT,
     "admin" BOOLEAN NOT NULL DEFAULT false,
+    "refreshToken" TEXT,
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("dni")
 );
